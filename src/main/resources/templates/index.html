@@ -7,17 +7,17 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<title>Ingresar estudiante</title>
+<title>Acciones estudiante</title>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="d-flex flex-column justify-content-center align-items-center">
-			<h1 class="mt-2">Ingresar estudiante</h1>
+			<h1 class="mt-2">Acciones estudiante</h1>
 			<div class="card col-sm-8 mt-2">
 				<div class="card-body">
-	
+					<h2 class="mt-2">Ingresar estudiante</h2>
 					<form th:action="@{/insertar}" th:object="${estudiante}" method="post">
-			  			<div class="form-group">
+			  			<div class="form-group mt-4">
 			    			<label>Nombre del estudiante:</label>
 			    			<input type="text" class="form-control" placeholder="Ingrese el nombre del estudiante" th:field="${estudiante.nombre}">
 							<span th:errors="*{nombre}" style="color:  #E81505;"></span><br>
@@ -37,9 +37,21 @@
 			    			<input type="text" class="form-control" placeholder="'Ingenieria' Industrial (adminitracion)" th:field="*{carrera}">
 							<span th:errors="*{carrera}" style="color:  #E81505;"></span><br>
 			  			</div>
-			  			<input class="btn btn-primary" type="submit" value="Agregar estudiante">
+			  			<input class="btn btn-success" type="submit" value="Agregar estudiante">
 			  		</form>
 			  	</div>
+			</div>
+			<div class="card col-sm-8 mt-2">
+				<div class="card-body">
+					<form th:action="@{/eliminar}" method="post">
+					<h2 class="mt-2">Eliminar estudiante</h2>
+						<div class="form-group mt-4">
+			    			<label>Borrar estudiante por codigo:</label>
+			    			<input type="number" class="form-control" name="codigo">
+			  			</div>
+			  			<input class="btn btn-danger" type="submit" value="Eliminar estudiante">
+			  		</form>
+				</div>
 			</div>
 			<a type="button" class="btn btn-info btn-lg mt-2 col-sm-4" href="/listado" >Listado Estudiantes</a>
 		</div>

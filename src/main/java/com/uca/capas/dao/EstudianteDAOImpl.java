@@ -20,7 +20,6 @@ public class EstudianteDAOImpl implements EstudianteDAO {
 
 	@Override
 	public List<Estudiante> findAll() throws DataAccessException {
-		// TODO Auto-generated method stub
 		StringBuffer sb = new StringBuffer();
 		sb.append("select * from public.estudiante");
 		Query query = entityManager.createNativeQuery(sb.toString(), Estudiante.class);
@@ -30,9 +29,21 @@ public class EstudianteDAOImpl implements EstudianteDAO {
 	}
 
 	@Override
+	public Estudiante findOne(Integer code) throws DataAccessException {
+		Estudiante estudiante = entityManager.find(Estudiante.class, code);
+		return estudiante;
+	}
+
+	@Override
 	@Transactional
 	public void insert(Estudiante estudiante) throws DataAccessException {
-		// TODO Auto-generated method stub
 		entityManager.persist(estudiante);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Integer code) throws DataAccessException {
+		Estudiante estudiante = findOne(code);
+		entityManager.remove(estudiante);
 	}
 }
