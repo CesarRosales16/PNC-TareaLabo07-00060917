@@ -8,60 +8,43 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<title>Acciones estudiante</title>
+<title>Editar estudiante</title>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="d-flex flex-column justify-content-center align-items-center">
-			<h1 class="mt-2">Acciones estudiante</h1>
+			<h1 class="mt-2">Editar estudiante</h1>
 			<div class="card col-sm-8 mt-2">
 				<div class="card-body">
-					<h2>Ingresar estudiante</h2>
 					<form th:action="@{/insertar}" th:object="${estudiante}" method="post">
+					<input type="hidden" class="form-control" th:field="*{codigoEstudiante}">
 			  			<div class="form-group">
 			    			<label>Nombre del estudiante:</label>
-			    			<input type="text" class="form-control" placeholder="Ingrese el nombre del estudiante" th:field="${estudiante.nombre}">
+			    			<input type="text" class="form-control" th:field="*{nombre}">
 							<span th:errors="*{nombre}" style="color:  #E81505;"></span><br>
 			  			</div>
 			  			<div class="form-group">
 			  				<label>Apellido del estudiante:</label>
-			    			<input type="text" class="form-control" placeholder="Ingrese el apellido del estudiante" th:field="*{apellido}">
+			    			<input type="text" class="form-control" th:field="*{apellido}">
 							<span th:errors="*{apellido}" style="color:  #E81505;"></span><br>
 			  			</div>
 			  			<div class="form-group">
 			    			<label>Numero de carne:</label>
-			    			<input type="number" class="form-control" placeholder="00060917" th:field="*{carne}">
+			    			<input type="number" class="form-control" th:field="*{carne}">
 							<span th:errors="*{carne}" style="color:  #E81505;"></span><br>
 			  			</div>
 			  			<div class="form-group">
 			    			<label>Carrera:</label>
-			    			<input type="text" class="form-control" placeholder="'Ingenieria' Industrial (administracion)" th:field="*{carrera}">
+			    			<input type="text" class="form-control" th:field="*{carrera}">
 							<span th:errors="*{carrera}" style="color:  #E81505;"></span><br>
-			  			</div>
-			  			<button type="submit" class="btn btn-success">
-							<i class="fas fa-user-plus"></i> Agregar
+			  			</div>		
+			  			<button type="submit" class="btn btn-warning">
+							<i class="fas fa-save"></i> Guardar
 						</button>
 			  		</form>
 			  	</div>
 			</div>
-			<div class="card col-sm-8 mt-2">
-				<div class="card-body">
-					<form th:action="@{/eliminar}" method="post">
-					<h2 class="mt-2">Eliminar/Editar estudiante</h2>
-						<div class="form-group mt-4">
-			    			<label>Codigo de estudiante:</label>
-			    			<input type="number" class="form-control" name="codigo">
-			  			</div>
-			  			<button type="submit" class="btn btn-danger" name="action" value="Eliminar">
-							<i class="fas fa-trash-alt"></i> Eliminar
-						</button>
-			  			<button type="submit" class="btn btn-warning" name="action" value="Editar">
-							<i class="fas fa-edit"></i> Editar
-						</button>
-			  		</form>
-				</div>
-			</div>
-			<a type="button" class="btn btn-info btn-lg mt-2 col-sm-4 mb-4" href="/listado" >Listado Estudiantes</a>
+			<a class="btn btn-primary btn-lg col-sm-1 mt-2" href="/inicio" role="button">Inicio</a>
 		</div>
 	</div>
 

@@ -69,7 +69,7 @@ public class MainController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/eliminar", method = RequestMethod.POST)
+	@RequestMapping(value = "/eliminar", method = RequestMethod.POST, params = "action=Eliminar")
 	public ModelAndView eliminarEstudiante(@RequestParam(value = "codigo") int codigo) {
 		ModelAndView mav = new ModelAndView();
 		List<Estudiante> estudiantes = null;
@@ -84,6 +84,24 @@ public class MainController {
 
 		mav.addObject("estudiantes", estudiantes);
 		mav.setViewName("listado");
+
+		return mav;
+
+	}
+
+	@RequestMapping(value = "/eliminar", method = RequestMethod.POST, params = "action=Editar")
+	public ModelAndView editarEstudiante(@RequestParam(value = "codigo") int codigo) {
+		ModelAndView mav = new ModelAndView();
+		Estudiante estudiante = null;
+		
+		try {
+			estudiante = estudianteService.findOne(codigo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		mav.addObject("estudiante", estudiante);
+		mav.setViewName("editar");
 
 		return mav;
 
